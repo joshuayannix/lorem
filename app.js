@@ -19,15 +19,18 @@ const result = document.querySelector('.lorem-text')
 form.addEventListener('submit', e => {
   e.preventDefault();
   const value = parseInt(amount.value);
-  //empty, -1, or > 9
-  if(isNaN(value) || value < 0 || value > 9){
-    result.innerHTML = `<p class='result'>${text[0]}</p>`
-  }
+  const random = Math.floor(Math.random() * text.length);
+
   let arr = text.slice(0, value)
   let display = ''
   for (let i=0; i<arr.length; i++){
     display += `<p class='result'>${arr[i]}</p>`
   }
+  //empty, -1, or > 9
+  if(isNaN(value) || value < 0 || value > 9){
+    result.innerHTML = `<p class='result'>${text[random]}</p>`
+  } else {
+    result.innerHTML = display
+  }
   
-  result.innerHTML = display
 })
