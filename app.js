@@ -23,14 +23,39 @@ form.addEventListener('submit', e => {
 
   let arr = text.slice(0, value)
   let display = ''
-  for (let i=0; i<arr.length; i++){
+  for (let i = 0; i < arr.length; i++) {
     display += `<p class='result'>${arr[i]}</p>`
   }
   //empty, -1, or > 9
-  if(isNaN(value) || value < 0 || value > 9){
+  if (isNaN(value) || value <= 0 || value > 9) {
     result.innerHTML = `<p class='result'>${text[random]}</p>`
   } else {
-    result.innerHTML = display
+    let tempText = text.slice(0, value);
+    tempText = tempText.map(item => {
+      return `<p class='result'>${item}</p>`
+    }).join('');
+    result.innerHTML = tempText;
   }
-  
 })
+
+
+// my own solution
+
+// form.addEventListener('submit', e => {
+//   e.preventDefault();
+//   const value = parseInt(amount.value);
+//   const random = Math.floor(Math.random() * text.length);
+
+//   let arr = text.slice(0, value)
+//   let display = ''
+//   for (let i = 0; i < arr.length; i++) {
+//     display += `<p class='result'>${arr[i]}</p>`
+//   }
+//   //empty, -1, or > 9
+//   if (isNaN(value) || value <= 0 || value > 9) {
+//     result.innerHTML = `<p class='result'>${text[random]}</p>`
+//   } else {
+//     result.innerHTML = display
+//   }
+
+// })
